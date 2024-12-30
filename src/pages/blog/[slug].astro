@@ -1,10 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
@@ -13,10 +13,10 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-const formattedDate = new Date(post.data.date).toLocaleDateString('es-ES', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
+const formattedDate = new Date(post.data.date).toLocaleDateString("es-ES", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 });
 ---
 
@@ -24,6 +24,7 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('es-ES', {
   <article class="max-w-4xl mx-auto px-4 py-16">
     <div class="mb-8">
       <img
+        transition:name={`image-${post.slug}`}
         src={post.data.image}
         alt={post.data.title}
         class="w-full h-[400px] object-cover rounded-lg shadow-lg mb-8"
