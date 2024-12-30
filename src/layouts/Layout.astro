@@ -1,7 +1,7 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import { ViewTransitions } from 'astro:transitions';
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -14,92 +14,24 @@ const { title } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Dragón del Sur - Escuela de Artes Marciales" />
+    <meta
+      name="description"
+      content="Dragón del Sur - Escuela de Artes Marciales"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Dragón del Sur</title>
-    <ViewTransitions />
-    <style is:global>
-      /* Animación de entrada para el contenido principal */
-      @keyframes slideFromRight {
-        from {
-          transform: translateX(100px);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      /* Animación para títulos */
-      @keyframes fadeInScale {
-        from {
-          transform: scale(0.8);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      /* Animación para imágenes */
-      @keyframes imageReveal {
-        from {
-          clip-path: inset(0 100% 0 0);
-        }
-        to {
-          clip-path: inset(0 0 0 0);
-        }
-      }
-
-      /* Aplicar animaciones a elementos específicos */
-      main {
-        view-transition-name: main;
-      }
-
-      h1, h2 {
-        view-transition-name: titles;
-      }
-
-      img {
-        view-transition-name: images;
-      }
-
-      /* Estilos para las transiciones */
-      ::view-transition-old(main) {
-        animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both fade-out;
-      }
-
-      ::view-transition-new(main) {
-        animation: 
-          0.7s cubic-bezier(0.4, 0, 0.2, 1) both slideFromRight,
-          0.7s cubic-bezier(0.4, 0, 0.2, 1) both fade-in;
-      }
-
-      ::view-transition-old(titles) {
-        animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both fade-out;
-      }
-
-      ::view-transition-new(titles) {
-        animation: 0.7s cubic-bezier(0.4, 0, 0.2, 1) both fadeInScale;
-      }
-
-      ::view-transition-old(images) {
-        animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both fade-out;
-      }
-
-      ::view-transition-new(images) {
-        animation: 0.7s cubic-bezier(0.4, 0, 0.2, 1) both imageReveal;
-      }
-    </style>
+    <ClientRouter />
+    <style is:global></style>
   </head>
   <body class="min-h-screen flex flex-col bg-gray-50">
     <Navigation />
-    <main class="flex-grow">
+    <main class="flex-grow" transition:animate="initial">
       <slot />
     </main>
     <Footer />
