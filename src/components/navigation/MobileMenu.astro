@@ -1,0 +1,87 @@
+---
+interface Props {
+  links: {
+    text: string;
+    href: string;
+  }[];
+}
+
+const { links } = Astro.props;
+---
+
+<div class="sm:hidden">
+  <button
+    id="mobile-menu-button"
+    class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+  >
+    <span class="sr-only">Abrir menú</span>
+    <svg
+      class="block h-6 w-6"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+
+  <div
+    id="mobile-menu"
+    class="hidden fixed inset-0 bg-white z-50 transition-transform duration-300 ease-in-out transform translate-x-full"
+  >
+    <div class="p-4">
+      <button
+        id="close-menu-button"
+        class="absolute top-4 right-4 p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100"
+      >
+        <span class="sr-only">Cerrar menú</span>
+        <svg
+          class="h-6 w-6"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div class="mt-12 space-y-6">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="block text-center text-xl font-japanese font-medium text-gray-700 hover:text-primary py-2"
+            >
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const closeMenuButton = document.getElementById("close-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  function toggleMenu() {
+    mobileMenu?.classList.toggle("translate-x-full");
+    mobileMenu?.classList.toggle("hidden");
+    document.body.classList.toggle("overflow-hidden");
+  }
+
+  mobileMenuButton?.addEventListener("click", toggleMenu);
+  closeMenuButton?.addEventListener("click", toggleMenu);
+</script>

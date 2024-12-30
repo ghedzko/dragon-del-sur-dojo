@@ -1,0 +1,23 @@
+---
+interface Props {
+  links: {
+    text: string;
+    href: string;
+  }[];
+}
+
+const { links } = Astro.props;
+---
+
+<div class="hidden sm:flex sm:items-center">
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        class="ml-8 text-gray-700 hover:text-primary font-japanese font-medium transition-colors"
+      >
+        {link.text}
+      </a>
+    ))
+  }
+</div>

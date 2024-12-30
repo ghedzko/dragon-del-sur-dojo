@@ -1,0 +1,33 @@
+---
+interface Props {
+  address: string;
+  phone: string;
+  email: string;
+  schedule: {
+    weekdays: string;
+    saturday: string;
+  };
+}
+
+const { address, phone, email, schedule } = Astro.props;
+---
+
+<div class="space-y-4 text-lg">
+  <p>
+    <span class="font-bold">Dirección:</span><br>
+    {address}
+  </p>
+  <p>
+    <span class="font-bold">Teléfono:</span><br>
+    {phone}
+  </p>
+  <p>
+    <span class="font-bold">Email:</span><br>
+    {email}
+  </p>
+  <p>
+    <span class="font-bold">Horarios:</span><br>
+    Lunes a Viernes: {schedule.weekdays}<br>
+    Sábados: {schedule.saturday}
+  </p>
+</div>

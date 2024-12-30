@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const activities = await getCollection('activities');
+---
+
+<Layout title="Actividades">
+  <div class="max-w-7xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-center mb-12">Nuestras Actividades</h1>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {activities.map(activity => (
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img 
+            src={activity.data.image} 
+            alt={activity.data.title}
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-2xl font-bold mb-2">{activity.data.title}</h2>
+            <p class="text-gray-600 mb-4">{activity.data.description}</p>
+            <div class="text-sm text-gray-500">
+              <p>🕒 {activity.data.schedule}</p>
+              <p>👨‍🏫 {activity.data.instructor}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

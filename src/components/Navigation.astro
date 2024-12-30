@@ -1,0 +1,27 @@
+---
+import MobileMenu from './navigation/MobileMenu.astro';
+import DesktopMenu from './navigation/DesktopMenu.astro';
+
+const links = [
+  { text: 'Inicio', href: '/' },
+  { text: 'Actividades', href: '/actividades' },
+  { text: 'Blog', href: '/blog' },
+  { text: 'Contacto', href: '/contacto' },
+];
+---
+
+<nav class="bg-white shadow-md fixed w-full top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <a href="/" class="text-xl md:text-2xl font-display font-bold text-primary">
+          Dragón del Sur
+        </a>
+      </div>
+      
+      <DesktopMenu links={links} />
+      <MobileMenu links={links} />
+    </div>
+  </div>
+</nav>
+<div class="h-16"></div> <!-- Espaciador para el nav fixed -->

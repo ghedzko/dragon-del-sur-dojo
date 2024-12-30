@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GoogleMap from '../components/map/GoogleMap.astro';
+import ContactForm from '../components/contact/ContactForm.astro';
+import ContactInfo from '../components/contact/ContactInfo.astro';
+
+const contactInfo = {
+  address: "Av. Principal 123, Ciudad",
+  phone: "+123 456 789",
+  email: "info@dragondelsur.com",
+  schedule: {
+    weekdays: "9:00 - 21:00",
+    saturday: "9:00 - 14:00"
+  }
+};
+---
+
+<Layout title="Contacto">
+  <div class="max-w-7xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-center mb-12">Contacto</h1>
+    
+    <div class="grid md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Información de Contacto</h2>
+        <ContactInfo {...contactInfo} />
+        
+        <div class="mt-8">
+          <h2 class="text-2xl font-bold mb-4">Ubicación</h2>
+          <GoogleMap 
+            address={contactInfo.address}
+            height="300px"
+          />
+        </div>
+      </div>
+      
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Envíanos un Mensaje</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </div>
+</Layout>

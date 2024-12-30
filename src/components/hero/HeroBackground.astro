@@ -1,0 +1,37 @@
+---
+interface Props {
+  images: string[];
+  interval?: number;
+}
+
+const { images, interval = 5000 } = Astro.props;
+---
+
+<div class="hero-background relative h-full w-full overflow-hidden">
+  {
+    images.map((image, index) => (
+      <div
+        class={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === 0 ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+        style={`background-image: url('${image}')`}
+        data-hero-image
+      ></div>
+    ))
+  }
+</div>
+
+<script define:vars={{ interval }}>
+  const images = document.querySelectorAll("[data-hero-image]");
+  let currentIndex = 0;
+
+  function rotateImages() {
+    images[currentIndex].classList.remove("opacity-100", "z-10");
+    images[currentIndex].classList.add("opacity-0", "z-0");
+
+    currentIndex = (currentIndex + 1) % images.length;
+
+    images[currentIndex].classList.remove("opacity-0", "z-0");
+    images[currentIndex].classList.add("opacity-100", "z-10");
+  }
+
+  setInterval(rotateImages, interval);
+</script>
