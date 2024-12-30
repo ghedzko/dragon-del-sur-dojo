@@ -17,11 +17,15 @@ const { title, description, images } = Astro.props;
   <HeroBackground images={images} />
 
   <!-- Fondo Gradiente Mejorado -->
-  <div class="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent"
+    aria-hidden="true"
+  >
+  </div>
 
   <!-- Contenido del Hero -->
   <div
-    class="relative text-center text-slate-600 px-6 md:px-10 max-w-[90%] md:max-w-2xl mx-auto"
+    class="relative text-center text-white px-6 md:px-10 max-w-[90%] md:max-w-2xl mx-auto"
   >
     <h1
       class="text-4xl md:text-6xl font-display font-bold mb-4 leading-tight drop-shadow-lg"
