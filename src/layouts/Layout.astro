@@ -13,18 +13,72 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- Meta básicos -->
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Dragón del Sur</title>
+
+    <!-- Meta SEO -->
     <meta
       name="description"
       content="Dragón del Sur - Escuela de Artes Marciales"
     />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="keywords"
+      content="karate, artes marciales, dojo, Dragón del Sur, entrenamiento físico, disciplina"
+    />
+    <meta name="author" content="Dragón del Sur" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (OG) para redes sociales -->
+    <meta
+      property="og:title"
+      content="Dragón del Sur - Escuela de Artes Marciales"
+    />
+    <meta
+      property="og:description"
+      content="Descubre el arte marcial que transformará tu cuerpo y mente. ¡Únete a Dragón del Sur!"
+    />
+    <meta property="og:image" content="/images/karate.jpg" />
+    <meta property="og:url" content="https://dragondelsur.com.ar/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Dragón del Sur - Escuela de Artes Marciales"
+    />
+    <meta
+      name="twitter:description"
+      content="Descubre el arte marcial que transformará tu cuerpo y mente. ¡Únete a Dragón del Sur!"
+    />
+    <meta name="twitter:image" content="/images/twitter-image.jpg" />
+    <meta name="twitter:site" content="@dragondelsur" />
+    <meta name="twitter:creator" content="@dragondelsur" />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Meta para accesibilidad -->
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Meta de generación de herramientas -->
+    <meta name="generator" content="Astro v5.1.1" />
+
+    <!-- Fuentes -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <meta name="generator" content={Astro.generator} />
     <title>{title} | Dragón del Sur</title>
     <ClientRouter />
     <style is:global></style>
